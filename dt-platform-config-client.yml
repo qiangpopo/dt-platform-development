@@ -1,0 +1,28 @@
+server: 
+  port: 4433
+spring:
+  profiles: dev #开发环境
+  application:
+    name: dt-platform-confg-client
+
+eureka:
+  client:
+    service-url:
+      ##defaultZone: http://${eureka.instance.hostname}:7001/eureka/ #将服务注册到Eurka中   ##单机版配置
+      ##defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka      ## 集群配置举例
+      defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka
+#请保存为UTF-8格式
+---
+server: 
+  port: 4434
+spring:
+  profiles: test #开发环境
+  application:
+    name: dt-platform-confg-client
+
+eureka:
+  client:
+    service-url:
+      ##defaultZone: http://${eureka.instance.hostname}:7001/eureka/ #将服务注册到Eurka中   ##单机版配置
+      ##defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka      ## 集群配置举例
+      defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka

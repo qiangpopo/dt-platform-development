@@ -1,0 +1,25 @@
+spring:
+  profile: 
+   active: 
+     -dev
+     
+     
+---
+
+
+
+spring:
+  profiles: dev #开发环境
+  application:
+    name: dt-platform-hystrix-dashboard
+server: 
+  port: 5001
+  
+---
+
+spring:
+  profiles: test #开发环境
+  application:
+    name: dt-platform-hystrix-dashboard
+server: 
+  port: 5001

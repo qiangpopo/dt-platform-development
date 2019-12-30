@@ -1,0 +1,64 @@
+spring:
+  profile: 
+   active: 
+     -dev
+
+---
+server: 
+    port: 9001
+spring:
+  profile: dev
+  application:
+    name: user-service  # 集群时候不需要改这儿名字 只有Eureka需要改变
+  datasource:
+    url: jdbc:mysql://localhost:3306/springclouddemo03?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&verifyServerCertificate=false&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid: 
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      # 配置监控统计拦截的filters,去掉监控界面sql无法统计，‘wall’用于防火墙
+      filters: stat,wall,log4j
+      maxPoolPreparedStatementPerConnectionSize: 20
+      userGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500    
+
+
+#Mybatis配置
+mybatis: 
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.dt.entity
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰命名
+    cache-enabled: true #开启二级缓存   
+
+
+eureka: 
+  instance:
+    hostname: localhost 
+    instance-id: user-provide  #集群配置 这里要不同
+    prefer-ip-address: true   # 访问路径可以ip 显示
+  client: 
+    service-url:
+      ##defaultZone: http://${eureka.instance.hostname}:7001/eureka/ #将服务注册到Eurka中   ##单机版配置
+      ##defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka      ## 集群配置举例
+      defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka
+info:   #追加微服务 信息 
+  app.name: user-service
+  company.name: www.zjx.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+
+

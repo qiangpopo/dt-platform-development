@@ -1,0 +1,80 @@
+spring:
+  profile: 
+   active: 
+     -dev
+     
+     
+---
+
+
+spring:
+  profiles: dev #开发环境
+  application:
+    name: dt-platform-gateway
+
+server:
+  port: 6001
+
+eureka:
+  instance:
+    instance-id: gateway-6001
+    hostname: myzuul.com
+    prefer-ip-address: true
+  client:
+    service-url:
+      ##defaultZone: http://${eureka.instance.hostname}:7001/eureka/ #将服务注册到Eurka中   ##单机版配置
+      ##defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka      ## 集群配置举例
+      defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka      ## 集群配置
+zuul: 
+   #公共前缀
+   prefix: /dtCloud  # 设置统一访问前缀
+   ignored-services: user-service   # "*" 禁用所有微服务名字
+   routes: #设置微服务访问入口
+     mydept.serviceId: user-service   #  微服务名字  多个用逗号分隔 
+     mydept.path: /myUser/**   #入口名字   path:    多个用逗号分隔 
+     
+
+
+info:
+  app.name: springcloud-study-zuul-gateway
+  company.name: www.zjx.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
+  
+  
+  
+---
+
+spring:
+  profiles: test #测试环境
+  application:
+    name: dt-platform-gateway
+
+server:
+  port: 6001
+
+eureka:
+  instance:
+    instance-id: gateway-6001
+    hostname: myzuul.com
+    prefer-ip-address: true
+  client:
+    service-url:
+      ##defaultZone: http://${eureka.instance.hostname}:7001/eureka/ #将服务注册到Eurka中   ##单机版配置
+      ##defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka      ## 集群配置举例
+      defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka      ## 集群配置
+zuul: 
+   #公共前缀
+   prefix: /dtCloud  # 设置统一访问前缀
+   ignored-services: user-service   # "*" 禁用所有微服务名字
+   routes: #设置微服务访问入口
+     mydept.serviceId: user-service   #  微服务名字  多个用逗号分隔 
+     mydept.path: /myUser/**   #入口名字   path:    多个用逗号分隔 
+     
+
+
+info:
+  app.name: springcloud-study-zuul-gateway
+  company.name: www.zjx.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
