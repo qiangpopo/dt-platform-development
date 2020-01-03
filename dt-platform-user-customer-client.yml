@@ -15,6 +15,13 @@ feign:
   # 开启断路器（熔断器）
   hystrix:
     enabled: true
+    command:
+      default:
+        execution:
+          isolation:
+            strategy: SEMAPHORE  #加上这个就可以获取到HttpServletRequest
+            thread:
+              timeoutInMilliseconds: 10000
 eureka:
   client:
     service-url:

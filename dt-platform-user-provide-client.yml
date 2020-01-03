@@ -34,7 +34,8 @@ spring:
       userGlobalDataSourceStat: true
       connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500    
 
-
+      
+      
 #Mybatis配置
 mybatis: 
   mapper-locations: classpath:mapper/*.xml
@@ -54,6 +55,15 @@ eureka:
       ##defaultZone: http://${eureka.instance.hostname}:7001/eureka/ #将服务注册到Eurka中   ##单机版配置
       ##defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka      ## 集群配置举例
       defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: http://localhost:3001/oauth/token
+      user-authorization-uri: http://localhost:3001/oauth/authorize
+    resource:
+      token-info-uri: http://localhost:3001/oauth/check_token
 info:   #追加微服务 信息 
   app.name: user-service
   company.name: www.zjx.com

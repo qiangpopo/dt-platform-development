@@ -1,2 +1,2 @@
 # dt-platform-development
-spring cloud 仓库
+本地配置仓库
