@@ -26,7 +26,7 @@ eureka:
   client:
     service-url:
       #defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka     #集群配置
-      defaultZone: http://eurka01.com:7001/eureka
+      defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka
     register-with-eureka: false
 
     
