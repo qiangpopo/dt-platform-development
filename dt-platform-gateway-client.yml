@@ -27,16 +27,37 @@ eureka:
       ##defaultZone: http://${eureka.instance.hostname}:7001/eureka/ #将服务注册到Eurka中   ##单机版配置
       ##defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka      ## 集群配置举例
       defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka      ## 集群配置
+      
 zuul: 
    sensitiveHeaders: 
    #公共前缀
    prefix: /dtCloud  # 设置统一访问前缀
-   ignored-services: user-service   # "*" 禁用所有微服务名字
+   ignored-services: user-service   # "*"      禁用所有微服务名字
    routes: #设置微服务访问入口
-     mydept.serviceId: user-service   #  微服务名字  多个用逗号分隔 
-     mydept.path: /myUser/**   #入口名字   path:    多个用逗号分隔 
+          user:
+              serviceId: user-service   #  微服务名字  多个用逗号分隔 
+              sensitiveHeaders: 
+              path: /myUser/**   #入口名字   path:    多个用逗号分隔 
+          user-customer:  
+              serviceId:  user-customer   #  微服务名字  多个用逗号分隔 
+              sensitiveHeaders: 
+              path: /user-customer/**   #入口名字   path:    多个用逗号分隔 
+          auth2:  
+              serviceId: auth2-service  #  微服务名字  多个用逗号分隔 
+              sensitiveHeaders: 
+              path: /auth2/**   #入口名字   path:    多个用逗号分隔 
+   add-proxy-headers: true
      
-
+security: 
+  oauth2: 
+    client: 
+     client-id: client
+     client-secret: secret
+     access-token-uri: http://localhost:3001/oauth/token
+     user-authorization-uri: http://localhost:3001/oauth/authorize
+    resource: 
+      prefer-token-info: true
+      token-info-uri: http://localhost:3001/oauth/check_token
       
 info:
   app.name: springcloud-study-zuul-gateway
@@ -66,6 +87,16 @@ eureka:
       ##defaultZone: http://${eureka.instance.hostname}:7001/eureka/ #将服务注册到Eurka中   ##单机版配置
       ##defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka      ## 集群配置举例
       defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka      ## 集群配置
+security: 
+  oauth2: 
+    client: 
+     client-id: client
+     client-secret: secret
+     access-token-uri: http://localhost:3001/oauth/token
+     user-authorization-uri: http://localhost:3001/oauth/authorize
+    resource: 
+      prefer-token-info: true
+      token-info-uri: http://localhost:3001/oauth/check_token
 zuul: 
    sensitiveHeaders: 
    #公共前缀

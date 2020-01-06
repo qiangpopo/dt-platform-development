@@ -7,27 +7,47 @@ spring:
 spring: 
   profile: dev
   application: 
-    name: dt-platform-user-customer
+    name: user-customer
 server:
     port: 9004
 ### Feign 配置
 feign:
   # 开启断路器（熔断器）
-  hystrix:
+  hystrix: 
     enabled: true
-    command:
-      default:
-        execution:
-          isolation:
+    command: 
+      default: 
+        execution: 
+          isolation: 
             strategy: SEMAPHORE  #加上这个就可以获取到HttpServletRequest
-            thread:
+            thread: 
               timeoutInMilliseconds: 10000
+security: 
+  oauth2: 
+    client: 
+     client-id: client
+     client-secret: secret
+     access-token-uri: http://localhost:3001/oauth/token
+     user-authorization-uri: http://localhost:3001/oauth/authorize
+    resource: 
+      prefer-token-info: true
+      token-info-uri: http://localhost:3001/oauth/check_token
+
 eureka:
+  instance:
+    hostname: user-customer.com 
+    instance-id: user-customer  #集群配置 这里要不同
+    prefer-ip-address: true   # 访问路径可以ip 显示
   client:
     service-url:
       #defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka     #集群配置
       defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka
-    register-with-eureka: false
+      #register-with-eureka: false
+info:   #追加微服务 信息 
+  app.name: user-service
+  company.name: www.zjx.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
 
     
     
