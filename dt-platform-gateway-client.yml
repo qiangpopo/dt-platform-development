@@ -33,15 +33,15 @@ zuul:
    #公共前缀
    prefix: /dtCloud  # 设置统一访问前缀
    ignored-services: user-service   # "*"      禁用所有微服务名字
-   routes: #设置微服务访问入口
+   routes: #设置微服务访问入口service
           user:
               serviceId: user-service   #  微服务名字  多个用逗号分隔 
               sensitiveHeaders: 
               path: /myUser/**   #入口名字   path:    多个用逗号分隔 
-          user-customer:  
+          userCustomer:  
               serviceId:  user-customer   #  微服务名字  多个用逗号分隔 
               sensitiveHeaders: 
-              path: /user-customer/**   #入口名字   path:    多个用逗号分隔 
+              path: /usercustomer/**   #入口名字   path:    多个用逗号分隔 
           auth2:  
               serviceId: auth2-service  #  微服务名字  多个用逗号分隔 
               sensitiveHeaders: 
@@ -101,7 +101,8 @@ zuul:
    sensitiveHeaders: 
    #公共前缀
    prefix: /dtCloud  # 设置统一访问前缀
-   ignored-services: user-service   # "*" 禁用所有微服务名字
+    # "*" 禁用所有微服务名字
+   ignored-services: "*"  
    routes: #设置微服务访问入口
      mydept.serviceId: user-service   #  微服务名字  多个用逗号分隔 
      mydept.path: /myUser/**   #入口名字   path:    多个用逗号分隔 
