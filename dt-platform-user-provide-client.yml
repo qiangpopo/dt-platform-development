@@ -11,10 +11,11 @@ spring:
   application:
     name: user-service  # 集群时候不需要改这儿名字 只有Eureka需要改变
   datasource:
-    url: jdbc:mysql://localhost:3306/springclouddemo03?serverTimezone=CTT&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    #url: jdbc:mysql://localhost:3306/springclouddemo03?serverTimezone=CTT&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/springclouddemo03?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid: 
       initialSize: 5
