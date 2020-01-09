@@ -1,4 +1,4 @@
-spring:
+﻿spring:
   profile: 
    active: 
      -dev
@@ -46,6 +46,10 @@ zuul:
               serviceId: auth2-service  #  微服务名字  多个用逗号分隔 
               sensitiveHeaders: 
               path: /auth2/**   #入口名字   path:    多个用逗号分隔 
+	  car:
+              serviceId: car-service  #  微服务名字  多个用逗号分隔 
+              sensitiveHeaders: 
+              path: /car/**   #入口名字   path:    多个用逗号分隔 
    add-proxy-headers: true
      
 security: 
