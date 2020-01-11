@@ -15,36 +15,7 @@ spring:
 server: 
   port: 5001
   
-### Feign 配置
-feign:
-  hystrix:
-        enabled : true 
-  httpclient:
-        enabled: true
-  
-  # 开启断路器（熔断器）
-hystrix:
-  shareSecurityContext: true
-  command:
-    default:
-      execution:
-        timeout:
-          enabled: true
-        isolation:
-          strategy: SEMAPHORE
-          thread:
-            timeoutInMilliseconds: 60000
-security: 
-  oauth2: 
-    client: 
-     client-id: client
-     client-secret: secret
-     access-token-uri: http://localhost:3001/oauth/token
-     user-authorization-uri: http://localhost:3001/oauth/authorize
-    resource: 
-      prefer-token-info: true
-      token-info-uri: http://localhost:3001/oauth/check_token
-  
+
 ---
 
 spring:
