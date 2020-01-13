@@ -1,4 +1,4 @@
-﻿spring:
+spring:
   profile: 
    active: 
      -dev
@@ -15,7 +15,6 @@ spring:
 server: 
   port: 5001
   
-
 ---
 
 spring:
