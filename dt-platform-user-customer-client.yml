@@ -8,6 +8,10 @@ spring:
   profile: dev
   application: 
     name: user-customer
+  zipkin:
+    #base-url: http://localhost:9411 
+    discovery-client-enabled: true
+    base-url: http://zipkinserver.com:2001/
 server:
     port: 9004
 ### Feign 配置
@@ -50,6 +54,10 @@ eureka:
       #defaultZone: http://eurka01.com:8761/eureka,http://eurka02.com:8764/eureka,http://eurka03.com:8765/eureka     #集群配置
       defaultZone: http://eurka01.com:7001/eureka,http://eurka02.com:7002/eureka,http://eurka03.com:7003/eureka
       #register-with-eureka: false
+zipkin:
+    #base-url: http://localhost:9411 
+    discovery-client-enabled: true
+    base-url: http://zipkinserver.com
 info:   #追加微服务 信息 
   app.name: user-service
   company.name: www.zjx.com
