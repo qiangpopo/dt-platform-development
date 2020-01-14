@@ -41,7 +41,7 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.dt.entity
   configuration:
-    map-underscore-to-camel-case: true #开启驼峰命名
+    map-underscore-to-camel-case: false #开启驼峰命名
     cache-enabled: true #开启二级缓存   
 security: 
   oauth2: 
