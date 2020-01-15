@@ -41,6 +41,7 @@ security:
      access-token-uri: http://localhost:3001/oauth/token
      user-authorization-uri: http://localhost:3001/oauth/authorize
     resource: 
+      id: user-customer
       prefer-token-info: true
       token-info-uri: http://localhost:3001/oauth/check_token
 

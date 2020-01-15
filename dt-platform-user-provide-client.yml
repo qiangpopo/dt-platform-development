@@ -1,4 +1,4 @@
-﻿spring:
+spring:
   profile: 
    active: 
      -dev
@@ -15,9 +15,9 @@ spring:
     discovery-client-enabled: true
     base-url: http://zipkinserver.com:2001/
   datasource: 
-    url: jdbc:mysql://localhost:3306/dt-platform-auth?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&verifyServerCertificate=false&useSSL=false
-    username: root
-    password: root
+    url: jdbc:mysql://bj-cdb-d7rai9r6.sql.tencentcdb.com:62502/dt-platform-user?characterEncoding=utf8&useSSL=true
+    username: ccpqry
+    password: ccpqry
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid: 
