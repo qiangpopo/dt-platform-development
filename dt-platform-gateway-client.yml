@@ -42,6 +42,10 @@ zuul:
               serviceId:  user-customer   #  微服务名字  多个用逗号分隔 
               sensitiveHeaders: 
               path: /usercustomer/**   #入口名字   path:    多个用逗号分隔 
+          carCustomer:  
+              serviceId:  car-customer   #  微服务名字  多个用逗号分隔 
+              sensitiveHeaders: 
+              path: /carcustomer/**   #入口名字   path:    多个用逗号分隔 
           auth2:  
               serviceId: auth2-service  #  微服务名字  多个用逗号分隔 
               sensitiveHeaders: 
